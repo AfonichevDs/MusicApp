@@ -1,0 +1,25 @@
+nav {
+    background-color: black;
+    height: 85px;
+}
+
+.navbar {
+    padding: 0;
+}
+
+.header-logo {
+    width: 70px;
+}
+
+.navbar-brand {
+    margin-right: 16px;
+}
+
+#searchForm {
+    margin: 0 auto;
+    margin-left: 70px;
+}
+
+.navbar-collapse {
+    flex-basis: 0%;
+}

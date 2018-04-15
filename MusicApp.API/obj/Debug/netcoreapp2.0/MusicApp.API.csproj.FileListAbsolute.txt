@@ -1,0 +1,10 @@
+C:\NoNameProject\MusicApp\MusicApp.API\bin\Debug\netcoreapp2.0\MusicApp.API.deps.json
+C:\NoNameProject\MusicApp\MusicApp.API\bin\Debug\netcoreapp2.0\MusicApp.API.runtimeconfig.json
+C:\NoNameProject\MusicApp\MusicApp.API\bin\Debug\netcoreapp2.0\MusicApp.API.runtimeconfig.dev.json
+C:\NoNameProject\MusicApp\MusicApp.API\bin\Debug\netcoreapp2.0\MusicApp.API.dll
+C:\NoNameProject\MusicApp\MusicApp.API\bin\Debug\netcoreapp2.0\MusicApp.API.pdb
+C:\NoNameProject\MusicApp\MusicApp.API\obj\Debug\netcoreapp2.0\MusicApp.API.csproj.CoreCompileInputs.cache
+C:\NoNameProject\MusicApp\MusicApp.API\obj\Debug\netcoreapp2.0\MusicApp.API.AssemblyInfoInputs.cache
+C:\NoNameProject\MusicApp\MusicApp.API\obj\Debug\netcoreapp2.0\MusicApp.API.AssemblyInfo.cs
+C:\NoNameProject\MusicApp\MusicApp.API\obj\Debug\netcoreapp2.0\MusicApp.API.dll
+C:\NoNameProject\MusicApp\MusicApp.API\obj\Debug\netcoreapp2.0\MusicApp.API.pdb

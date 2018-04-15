@@ -1,0 +1,21 @@
+<form #loginForm="ngForm" class="form-signin text-center" (ngSubmit)="login()">
+  <img class="mb-4 login-logo" src="http://hddfhm.com/images/sax-clipart-13.png" alt="" width="216px">
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+  <label for="inputEmail" class="sr-only">User Name or Email</label>
+  <input type="email" id="inputEmail" name="userName" [(ngModel)]="model.username"
+  class="form-control" placeholder="Email address" required autofocus="">
+
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input type="password" id="inputPassword" name="password" [(ngModel)]="model.password"
+  class="form-control" placeholder="Password" required>
+
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div>
+  <button class="btn btn-lg btn-black btn-block" [disabled]="!loginForm.valid" type="submit">Sign in</button>
+  <a [routerLink]="['/register']">I don't have an account</a>
+  <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+</form>

@@ -1,0 +1,9 @@
+.btn-black {
+    background-color: black;
+    color: white;
+}
+
+.btn-inverse {
+    background-color: white;
+    color: black;
+}
