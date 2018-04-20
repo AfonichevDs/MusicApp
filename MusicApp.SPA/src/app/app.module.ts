@@ -6,14 +6,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { ControlPanelComponent } from './control-panel/control-panel.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
-import { CollapseModule } from 'ngx-bootstrap';
+import { CollapseModule, BsDatepickerModule } from 'ngx-bootstrap';
 import { SongListComponent } from './song-list/song-list.component';
 
 @NgModule({
@@ -29,8 +29,10 @@ import { SongListComponent } from './song-list/song-list.component';
     BrowserModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+    BsDatepickerModule.forRoot()
   ],
   providers: [
     AuthService,

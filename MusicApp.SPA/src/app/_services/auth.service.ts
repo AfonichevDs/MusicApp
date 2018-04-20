@@ -1,3 +1,4 @@
+import { User } from './../_models/User';
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -5,10 +6,12 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
+import { Country } from '../_models/Country';
 
 @Injectable()
 export class AuthService {
     baseUrl = 'http://localhost:5000/api/auth/';
+    countriesUrl = 'http://localhost:5000/api/countries/';
     userToken: any;
     decodedToken: any;
     jwtHelper: JwtHelper = new JwtHelper();
@@ -26,8 +29,19 @@ export class AuthService {
         }).catch(this.handleError);
     }
 
-    register(model: any) {
+    logOut() {
+        this.userToken = null;
+        localStorage.removeItem('token');
+    }
+
+    register(model: User) {
         return this.http.post(this.baseUrl + 'register', model, this.requestOptions()).catch(this.handleError);
+    }
+
+    getCountries(): Observable<Country[]> {
+        return this.http.get(this.countriesUrl + 'countries',this.requestOptions())
+        .map(response => <Country[]>response.json())
+        .catch(this.handleError);
     }
 
     loggedIn() {

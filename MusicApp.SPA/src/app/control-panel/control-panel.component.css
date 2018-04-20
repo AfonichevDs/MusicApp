@@ -43,20 +43,20 @@ a[aria-expanded="true"]::before {
 }
 
 #sidebar {
-    background: #161616;
+    background: black;
     color: #fff;
     transition: all 0.3s;
 }
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background:#111111;
+    background:black;
     min-height: 160px;
 }
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #ececec;
+    border-bottom: 1px solid black;
 }
 
 #sidebar ul p {
@@ -89,4 +89,19 @@ a[aria-expanded="true"]::before {
     bottom: 0;
     left: 0;
     z-index: 1050;
+}
+
+@media (max-width: 768px) {
+    #sidebarCollapse {
+        display: none;
+    }
+}
+
+.user-img {
+    height: 120px;
+    width: 120px;
+}
+
+.list-unstyled {
+    list-style: none;
 }

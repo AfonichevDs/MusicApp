@@ -14,14 +14,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     const token = localStorage.getItem('local');
+    this.hasLeftMargin = true;
     if(token) {
       this.authService.decodedToken = this.authService.jwtHelper.decodeToken(token);
     }
   }
 
-  changeMargin(hasLeftMargin:boolean) {
-    this.hasLeftMargin = hasLeftMargin;
-    //TODO: Use this property in ngClass for div main
+  changeMargin(hidden:boolean) {
+    this.hasLeftMargin = !hidden;
   }
 
 }

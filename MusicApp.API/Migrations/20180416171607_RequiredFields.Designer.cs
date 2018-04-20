@@ -11,9 +11,10 @@ using System;
 namespace MusicApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180416171607_RequiredFields")]
+    partial class RequiredFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,8 +30,7 @@ namespace MusicApp.API.Migrations
 
                     b.Property<int?>("CoverId");
 
-                    b.Property<string>("Name")
-                        .IsRequired();
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 
@@ -65,8 +65,7 @@ namespace MusicApp.API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name")
-                        .IsRequired();
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 
@@ -78,8 +77,7 @@ namespace MusicApp.API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Url")
-                        .IsRequired();
+                    b.Property<string>("Url");
 
                     b.HasKey("Id");
 
@@ -136,22 +134,20 @@ namespace MusicApp.API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("CountryId")
-                        .IsRequired();
+                    b.Property<int?>("CountryId");
 
                     b.Property<DateTime>("DateOfBirth");
 
                     b.Property<string>("Email")
                         .IsRequired();
 
-                    b.Property<string>("Gender")
-                        .IsRequired();
+                    b.Property<string>("Gender");
 
                     b.Property<byte[]>("PasswordHash");
 
                     b.Property<byte[]>("PasswordSalt");
 
-                    b.Property<int?>("PhotoId");
+                    b.Property<int?>("ProfilePhotoId");
 
                     b.Property<string>("UserName")
                         .IsRequired();
@@ -160,7 +156,7 @@ namespace MusicApp.API.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.HasIndex("PhotoId");
+                    b.HasIndex("ProfilePhotoId");
 
                     b.ToTable("Users");
                 });
@@ -206,12 +202,11 @@ namespace MusicApp.API.Migrations
                 {
                     b.HasOne("MusicApp.API.Models.Country", "Country")
                         .WithMany()
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CountryId");
 
                     b.HasOne("MusicApp.API.Models.Photo", "ProfilePhoto")
                         .WithMany()
-                        .HasForeignKey("PhotoId");
+                        .HasForeignKey("ProfilePhotoId");
                 });
 #pragma warning restore 612, 618
         }

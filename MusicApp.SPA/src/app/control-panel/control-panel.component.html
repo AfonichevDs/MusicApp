@@ -1,28 +1,38 @@
+<nav id="sidebar" [ngClass]="{hidden: isHidden}">
+    <div class="sidebar-header">
+        <img class="user-img" src="http://getthinapp.com/static/images/users/71-1436214917.png" alt="user">
+        <br>
+        <a class="panel-link" (click)="isCollapsed = !isCollapsed">
+            <i *ngIf="!isCollapsed" class="fa fa-angle-up fa-3x"></i>
+            <i *ngIf="isCollapsed" class="fa fa-angle-down fa-3x"></i>
+        </a>
+        <ul class="collapse list-unstyled" id="homeSubmenu" [collapse]="isCollapsed">
+            <li>   
+                <a class="panel-link" href="#">My Profile</a>
+            </li>
+            <li>
+                <a class="panel-link" (click)="logOut()">Log out</a>
+            </li>
+        </ul>
+    </div>
 
-  <nav id="sidebar" [ngClass]="{hidden: isHidden}">
-      <div class="sidebar-header">
-          <h3>Collapsible Sidebar</h3>
-      </div>
+    <ul class="list-unstyled components">
+        <li class="active panel-link">
+            <a href="#">Songs</a>
+        </li>
+        <li>
+            <a class="panel-link" href="#">Playlists</a>
+        </li>
+        <li>
+            <a class="panel-link" href="#">Albums</a>
+        </li>
+        <li>
+            <a class="panel-link" href="#">Artists</a>
+        </li>
+    </ul>
+</nav>
 
-      <ul class="list-unstyled components">
-          <li class="active panel-link"><a href="#">Home</a></li>
-          <li><a class="panel-link" href="#">About</a></li>
-
-          <li>
-              <a class="panel-link" (click)="isCollapsed = !isCollapsed">Pages</a>
-              <ul class="collapse list-unstyled" id="homeSubmenu" [collapse]="isCollapsed">
-                  <li><a class="panel-link" href="#">Page</a></li>
-                  <li><a class="panel-link" href="#">Page</a></li>
-                  <li><a class="panel-link" href="#">Page</a></li>
-              </ul>
-          </li>
-
-          <li><a class="panel-link" href="#">Portfolio</a></li>
-          <li><a class="panel-link" href="#">Contact</a></li>
-      </ul>
-  </nav>
-
-<button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn" (click)="toggleSideBar()">
+<button type="button" id="sidebarCollapse" class="btn btn-inverse navbar-btn" (click)="toggleSideBar()">
     <i class="glyphicon glyphicon-align-left"></i>
     Toggle Sidebar
 </button>

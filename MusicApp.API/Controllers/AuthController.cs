@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -17,8 +18,10 @@ namespace MusicApp.API.Controllers
     {
         private readonly IAuthRepository repo;
         private readonly IConfiguration config;
-        public AuthController(IAuthRepository repository, IConfiguration configuration)
+        private readonly IMapper mapper;
+        public AuthController(IAuthRepository repository, IConfiguration configuration, IMapper _mapper)
         {
+            mapper = _mapper;
             config = configuration;
             repo = repository;
         }
@@ -26,7 +29,7 @@ namespace MusicApp.API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody]UserRegisterDTO dto)
         {
-            if(!string.IsNullOrEmpty(dto.UserName))
+            if (!string.IsNullOrEmpty(dto.UserName))
                 dto.UserName = dto.UserName.ToLower();
 
             if (await repo.UserExists(dto.UserName))
@@ -35,14 +38,13 @@ namespace MusicApp.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var userToCreate = new User
-            {
-                UserName = dto.UserName
-            };
+            var userToCreate = mapper.Map<User>(dto);
 
             var createdUser = await repo.Register(userToCreate, dto.Password);
 
-            return StatusCode(201);
+            var userToReturn = mapper.Map<UserDetailDTO>(createdUser);
+
+            return CreatedAtAction("Register", userToReturn);
         }
 
         [HttpPost("login")]

@@ -3,7 +3,19 @@
     color: white;
 }
 
+.btn {
+    transition: transform .5s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
 .btn-inverse {
     background-color: white;
     color: black;
+}
+
+.theme-default .bs-datepicker-head {
+    background-color: black;
 }
