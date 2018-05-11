@@ -23,6 +23,16 @@ namespace MusicApp.API.Helpers
             .ForMember(dest => dest.PhotoUrl, opt => {
                 opt.MapFrom(src => src.ProfilePhoto.Url);
             });
+
+            CreateMap<Album, AlbumInfoDTO>()
+            .ForMember(dest => dest.PhotoUrl, opt => {
+                opt.MapFrom(src => src.Cover.Url);
+            });
+
+            CreateMap<Artist, ArtistDetailDTO>()
+            .ForMember(dest =>dest.PhotoUrl, opt => {
+                opt.MapFrom(src => src.Photo.Url);
+            });
         }
     }
 }

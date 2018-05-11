@@ -5,6 +5,5 @@ namespace MusicApp.API.Data
 {
     public interface ICountryRepository: IRepository<Country>
     {
-        string GetCountryNameById(int id);
     }
 }

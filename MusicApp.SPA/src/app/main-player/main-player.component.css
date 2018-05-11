@@ -1,0 +1,53 @@
+.main-player {
+    background-color: black;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-left: -5px;
+}
+
+#timeBar {
+    width: 50%;
+}
+
+#volumeBar {
+    width: 15%;
+}
+
+#mainPlay {
+    font-size: 40px;
+    margin-left: 10px;
+    color: #ececec;
+}
+
+#volumeIcon {
+    font-size: 30px;
+    margin-left: 10px;
+    color: #ececec;
+}
+
+input[type='range'] {
+    overflow: hidden;
+    -webkit-appearance: none;
+    background-color: white;
+  }
+  
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 11px;
+    -webkit-appearance: none;
+    color: black;
+    margin-top: -1px;
+  }
+  
+  input[type='range']::-webkit-slider-thumb {
+    width: 20px;
+    -webkit-appearance: none;
+    height: 11px;
+    cursor: ew-resize;
+    background: #434343;
+    box-shadow: -8000px 0 0 8000px gray;
+  }
+
+  h5 {
+      color: #ececec;
+  }

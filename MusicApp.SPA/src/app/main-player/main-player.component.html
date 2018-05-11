@@ -1,0 +1,12 @@
+<div class="main-player">
+  <h5>{{song?.name}}</h5>
+  <i class="fa fa-play-circle-o" id="mainPlay" #playButton
+   aria-hidden="true" (click)="Play()"></i>
+
+  <span id="currentTime" #currentTimeEl>{{currentTime}}</span>
+  <input type="range" id="timeBar" min="0" [max]="audio.duration" [(ngModel)]="audio.currentTime" />
+  <span id="duration">{{duration}}</span>
+
+  <i class="fa fa-volume-up" aria-hidden="true" id="volumeIcon"></i>
+  <input type="range" id="volumeBar" min="0" max="1" step="0.02" [(ngModel)]="audio.volume" />
+</div>

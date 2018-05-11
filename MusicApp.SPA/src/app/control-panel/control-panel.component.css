@@ -85,6 +85,8 @@ a[aria-expanded="true"]::before {
 }
 
 #sidebarCollapse {
+    margin-bottom: 75px;
+    margin-left: 5px;
     position: fixed;
     bottom: 0;
     left: 0;

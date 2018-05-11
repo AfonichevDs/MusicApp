@@ -12,11 +12,11 @@ namespace MusicApp.API.Models
         public bool IsMain { get; set; }
         public int? UserId { get; set; }
         public User User { get; set; }
-        public ICollection<Song> Songs { get; set; }
+        public ICollection<SongPlaylist> Songs { get; set; }
         
         public Playlist()
         {
-            Songs = new List<Song>();
+            Songs = new List<SongPlaylist>();
         }
     }
 }

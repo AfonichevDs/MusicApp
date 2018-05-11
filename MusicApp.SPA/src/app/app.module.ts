@@ -1,3 +1,8 @@
+import { ArtistResolver } from './_resolvers/artist.resolver';
+import { PlayerService } from './_services/player.service';
+import { PlaylistResolver } from './_resolvers/playlist.resolver';
+import { AuthModule } from './auth/auth.module';
+import { SongComponent } from './song-list/song/song.component';
 import { LoggedInGuard, AuthGuard } from './_guards/auth.guard';
 import { AlertifyService } from './_services/alertify.service';
 import { AuthService } from './_services/auth.service';
@@ -15,6 +20,10 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { CollapseModule, BsDatepickerModule } from 'ngx-bootstrap';
 import { SongListComponent } from './song-list/song-list.component';
+import { PlaylistsService } from './_services/playlists.service';
+import { MainPlayerComponent } from './main-player/main-player.component';
+import { ArtistDetailComponent } from './artist-detail/artist-detail.component';
+import { ArtistsService } from './_services/artists.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +32,10 @@ import { SongListComponent } from './song-list/song-list.component';
     RegisterComponent,
     HeaderComponent,
     ControlPanelComponent,
-    SongListComponent
+    SongListComponent,
+    SongComponent,
+    MainPlayerComponent,
+    ArtistDetailComponent
 ],
   imports: [
     BrowserModule,
@@ -32,13 +44,19 @@ import { SongListComponent } from './song-list/song-list.component';
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     CollapseModule.forRoot(),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    AuthModule
   ],
   providers: [
     AuthService,
     AlertifyService,
+    ArtistsService,
+    PlaylistsService,
     LoggedInGuard,
-    AuthGuard
+    AuthGuard,
+    PlaylistResolver,
+    ArtistResolver,
+    PlayerService
   ],
   bootstrap: [AppComponent]
 })

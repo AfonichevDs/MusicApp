@@ -48,6 +48,11 @@ export class AuthService {
         return tokenNotExpired('token');
     }
 
+    decodeToken() {
+        this.userToken = localStorage.getItem('token');
+        this.decodedToken = this.jwtHelper.decodeToken(this.userToken);
+    }
+
     private requestOptions() {
         const headers = new Headers({'Content-type': 'application/json'});
         return new RequestOptions({headers: headers});

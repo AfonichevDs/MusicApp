@@ -1,5 +1,6 @@
 <app-control-panel *ngIf="authService.loggedIn()" (toggled)="changeMargin($event)"></app-control-panel>
 <app-header *ngIf="authService.loggedIn()"></app-header>
-<div [ngClass]="{steppedLeft : hasLeftMargin && authService.loggedIn(), main: authService.loggedIn() }">
+<div [ngClass]="{steppedLeft : hasLeftMargin && authService.loggedIn(), main: authService.loggedIn() }" style="padding-left: 5px;margin-bottom: 80px;">
     <router-outlet></router-outlet>
+    <app-main-player *ngIf="authService.loggedIn()"></app-main-player>
 </div>

@@ -1,0 +1,27 @@
+<div class="song" [ngClass]="{'active-song' : isCurrent}">
+    <table>
+        <tr>
+            <td rowspan="2">
+                <i class="fa fa-play-circle play-btn" (click)="Play()" *ngIf="!isCurrent || (isCurrent && !isPlaying)"
+                 style="font-size:35px;margin-right: 10px;"></i>
+
+                 <i class="fa fa-pause-circle play-btn" (click)="Play()" *ngIf="isCurrent && isPlaying"
+                 style="font-size:35px;margin-right: 10px;"></i>
+            </td>
+            <td rowspan="2">
+                <img src="{{song.album.cover}}" class="song-cover">
+            </td>
+            <td>
+                <p class="song-title">{{song.name}}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a routerLink="/artist/{{song.album.artist.id}}" class="artist-link">{{song.album.artist.name}}</a>
+            </td>
+        </tr>
+    </table>
+
+
+    <i class="glyphicon glyphicon-volume-up" style="font-size:28px;"></i>
+</div>

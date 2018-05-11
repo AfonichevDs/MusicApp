@@ -1,3 +1,4 @@
-<p>
-  song-list works!
-</p>
+<div class="song-list">
+  <h5>{{mainPlaylist.name}}</h5>
+  <app-song *ngFor="let song of songs" [song]="song"></app-song>
+</div>

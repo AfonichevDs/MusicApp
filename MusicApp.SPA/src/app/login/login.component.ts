@@ -15,13 +15,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login() {
+  login(): void {
     this.authService.login(this.model).subscribe(data => {
-      this.alertify.message('logged in successfully');
+      this.alertify.message('Logged in successfully');
     }, error => {
       this.alertify.error(error);
     }, () => {
-      this.router.navigate(['/main']);
+      this.router.navigate(['/songs']);
     });
   }
 }

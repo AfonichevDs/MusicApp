@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
     return form.get("password").value === form.get("confirmPassword").value ? null : { 'mismatch': true };
   }
 
-  register() {
+  register():void {
     if (this.registerForm.valid) {
       this.user = Object.assign({}, this.registerForm.value);
     }
@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
     }, () => {
       this.authService.login({ username: this.user.username, password: this.user.password}).subscribe(
         success => {
-          this.router.navigate(['/main']);
+          this.router.navigate(['/songs']);
         }
       )
     });

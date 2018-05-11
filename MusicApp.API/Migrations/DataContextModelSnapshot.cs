@@ -78,6 +78,8 @@ namespace MusicApp.API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("PublicId");
+
                     b.Property<string>("Url")
                         .IsRequired();
 
@@ -120,15 +122,24 @@ namespace MusicApp.API.Migrations
                     b.Property<string>("Path")
                         .IsRequired();
 
-                    b.Property<int?>("PlaylistId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AlbumId");
 
+                    b.ToTable("Songs");
+                });
+
+            modelBuilder.Entity("MusicApp.API.Models.SongPlaylist", b =>
+                {
+                    b.Property<int>("SongId");
+
+                    b.Property<int>("PlaylistId");
+
+                    b.HasKey("SongId", "PlaylistId");
+
                     b.HasIndex("PlaylistId");
 
-                    b.ToTable("Songs");
+                    b.ToTable("SongPlaylist");
                 });
 
             modelBuilder.Entity("MusicApp.API.Models.User", b =>
@@ -196,10 +207,19 @@ namespace MusicApp.API.Migrations
                     b.HasOne("MusicApp.API.Models.Album", "Album")
                         .WithMany("Songs")
                         .HasForeignKey("AlbumId");
+                });
 
-                    b.HasOne("MusicApp.API.Models.Playlist")
+            modelBuilder.Entity("MusicApp.API.Models.SongPlaylist", b =>
+                {
+                    b.HasOne("MusicApp.API.Models.Playlist", "Playlist")
                         .WithMany("Songs")
-                        .HasForeignKey("PlaylistId");
+                        .HasForeignKey("PlaylistId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MusicApp.API.Models.Song", "Song")
+                        .WithMany("Playlists")
+                        .HasForeignKey("SongId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("MusicApp.API.Models.User", b =>

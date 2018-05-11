@@ -1,0 +1,53 @@
+.artist-photo {
+    width: 50%;
+    float: left;
+    margin-right: 8px;
+}
+
+.header-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.album-card-img {
+    height: calc(18rem - 1px);
+    width: calc(18rem - 1px);
+    transform: scale(1,1);
+    transition-duration: 400ms;
+    transition-timing-function: ease-out;
+    overflow: hidden;
+}
+
+.album-card {
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.card-body {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    text-align: center;
+}
+
+.card-body:hover {
+    box-shadow: 5px 0 10px -5px #333, 0 5px 10px -5px #333,-5px 0 10px -5px #333;
+}
+
+.card-img {
+    overflow: hidden;
+}
+
+.album-card:hover .album-card-img{
+    transform: scale(1.2, 1.2);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 0.9;
+}
+
+.album-link {
+    color: black;
+}
+
+

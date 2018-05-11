@@ -1,0 +1,28 @@
+<div class="artist-content">
+  <h2>{{artist.name}}</h2>
+  <div class="col-sm-12 header-info">
+    <p class="artist-description">
+      <img src="{{artist.photoUrl}}" alt="{{artist.name}}" class="artist-photo"> {{artist.description}}
+    </p>
+  </div>
+  <hr>
+  <h3>Albums</h3>
+  <div class="col-sm-12">
+    <div *ngFor="let albumRow of albums">
+      <div class="row">
+        <div *ngFor="let album of albumRow">
+          <div class="col-sm-4">
+            <div class="album-card" style="width: 18rem;">
+              <div class="card-img">
+                <img class="card-img-top album-card-img" src="{{album.photoUrl}}" alt="Album image">
+              </div>
+              <div class="card-body" style="width: 18rem;">
+                <h5 class="card-title"><a href="#" class="album-link">{{album.name}}</a></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
