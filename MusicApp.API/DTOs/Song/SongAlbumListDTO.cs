@@ -1,9 +1,10 @@
 namespace MusicApp.API.DTOs
 {
-    public class AlbumInfoDTO
+    public class SongAlbumListDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string PhotoUrl { get; set; }
+        public string Path { get; set; }
+        public int Order { get; set; }
     }
 }

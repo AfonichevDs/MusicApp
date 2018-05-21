@@ -1,3 +1,5 @@
+import { SearchResolver } from './_resolvers/search.resolver';
+import { AlbumsService } from './_services/albums.service';
 import { ArtistResolver } from './_resolvers/artist.resolver';
 import { PlayerService } from './_services/player.service';
 import { PlaylistResolver } from './_resolvers/playlist.resolver';
@@ -18,12 +20,20 @@ import { HeaderComponent } from './header/header.component';
 import { ControlPanelComponent } from './control-panel/control-panel.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
-import { CollapseModule, BsDatepickerModule } from 'ngx-bootstrap';
+import { CollapseModule, BsDatepickerModule, BsDropdownModule } from 'ngx-bootstrap';
 import { SongListComponent } from './song-list/song-list.component';
 import { PlaylistsService } from './_services/playlists.service';
 import { MainPlayerComponent } from './main-player/main-player.component';
 import { ArtistDetailComponent } from './artist-detail/artist-detail.component';
 import { ArtistsService } from './_services/artists.service';
+import { AlbumDetailComponent } from './album-detail/album-detail.component';
+import { AlbumResolver } from './_resolvers/album.resolver';
+import { SearchService } from './_services/search.service';
+import { SearchComponent } from './search/search.component';
+import { ArtistCardComponent } from './artist-card/artist-card.component';
+import { SlicedotsPipe } from './_pipes/slicedots.pipe';
+import { AlbumCardComponent } from './album-card/album-card.component';
+import { PlaylistCardComponent } from './playlist-card/playlist-card.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +45,13 @@ import { ArtistsService } from './_services/artists.service';
     SongListComponent,
     SongComponent,
     MainPlayerComponent,
-    ArtistDetailComponent
+    ArtistDetailComponent,
+    AlbumDetailComponent,
+    SearchComponent,
+    ArtistCardComponent,
+    SlicedotsPipe,
+    AlbumCardComponent,
+    PlaylistCardComponent
 ],
   imports: [
     BrowserModule,
@@ -45,6 +61,7 @@ import { ArtistsService } from './_services/artists.service';
     RouterModule.forRoot(appRoutes),
     CollapseModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    BsDropdownModule.forRoot(),
     AuthModule
   ],
   providers: [
@@ -56,7 +73,11 @@ import { ArtistsService } from './_services/artists.service';
     AuthGuard,
     PlaylistResolver,
     ArtistResolver,
-    PlayerService
+    PlayerService,
+    AlbumsService,
+    AlbumResolver,
+    SearchService,
+    SearchResolver
   ],
   bootstrap: [AppComponent]
 })

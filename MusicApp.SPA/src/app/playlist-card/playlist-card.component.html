@@ -1,0 +1,29 @@
+<div class="m-card" style="width: 18rem;">
+  <h5 class="card-title">
+    <a routerLink="/song-list/{{playlist.id}}" class="playlist-link">{{playlist.name}}</a>
+  </h5>
+  <div class="card-body" style="width: 18rem;">
+    <p>{{playlist.description}}</p>
+    <h6>
+      <span>{{playlist.songsCount}}</span> Songs</h6>
+    <h6>Includes:
+      <span *ngIf="playlist.artists.length > 3">
+        <span *ngFor="let artist of playlist.artists.slice(0,3)">
+          <a routerLink="/artist/{{artist.id}}" class="artist-link">{{artist.name}},</a>
+        </span>
+        ...
+      </span>
+      <span *ngIf="playlist.artists.length < 3">
+        <span *ngIf="playlist.artists.length === 1">
+          <a routerLink="/artist/{{playlist.artists[0].id}}" class="artist-link">{{playlist.artists[0].name}}</a>
+        </span>
+        <span *ngIf="playlist.artists.length != 1">
+          <span *ngFor="let artist of playlist.artists">
+            <a routerLink="/artist/{{artist.id}}" class="artist-link">{{artist.name}},</a>
+          </span>
+        </span>
+      </span>
+    </h6>
+    <h6>by {{playlist.user.userName}}</h6>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { AuthHttp } from 'angular2-jwt';
 import { Injectable } from '@angular/core';
 import { ArtistDetail } from '../_models/ArtistDetail';
+import { handleError } from './globals';
 
 @Injectable()
 export class ArtistsService {
@@ -17,26 +18,6 @@ export class ArtistsService {
         return this.authHttp
           .get(this.artistsUrl+ `getArtist`, {params: data })
           .map(response => <ArtistDetail>response.json())
-          .catch(this.handleError);
-    }
-
-    private handleError(error:any) {
-        const applicationError = error.headers.get('Application-Error');
-        if(applicationError) {
-            return Observable.throw(applicationError);
-        }
-
-        const serverError = error.json();
-        let modelStateErrors = '';
-        if(serverError) {
-            for (const key in serverError) {
-                if(serverError[key]) {
-                    modelStateErrors += serverError[key] + '\n';
-                }
-            }
-        }
-        return Observable.throw(
-            modelStateErrors || 'Server Error'
-        );
+          .catch(handleError);
     }
 }

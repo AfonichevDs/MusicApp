@@ -9,6 +9,8 @@ namespace MusicApp.API.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
+        [Required]
+        public int Year { get; set; }
         public Photo Cover { get; set; }
         public int ArtistId { get; set; }
         public Artist Artist { get; set; }

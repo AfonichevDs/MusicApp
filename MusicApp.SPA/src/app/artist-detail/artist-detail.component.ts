@@ -21,11 +21,11 @@ export class ArtistDetailComponent implements OnInit {
     this.albums = this.splitArrayIntoGroups(this.artist.albums,3);
   }
 
-  splitArrayIntoGroups<T>(arr:Array<Album>, length: number): Album[][] {
+  splitArrayIntoGroups(arr:Array<Album>, length: number): Album[][] {
     let result = new Array<Array<Album>>();
-    for(let y = 0; y < arr.length / 3 + 1; y++) {
+    for(let y = 0; y < arr.length / length + 1; y++) {
       let row:Album[]  = new Array<Album>();
-      row = arr.slice(y, (arr.length / (y + 1)) < 3 ? arr.length / (y + 1) : 3);
+      row = arr.slice(y, (arr.length / (y + 1)) < length ? arr.length / (y + 1) : length);
       result.push(row);
     }
     return result;

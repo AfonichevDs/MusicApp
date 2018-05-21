@@ -12,14 +12,7 @@
       <div class="row">
         <div *ngFor="let album of albumRow">
           <div class="col-sm-4">
-            <div class="album-card" style="width: 18rem;">
-              <div class="card-img">
-                <img class="card-img-top album-card-img" src="{{album.photoUrl}}" alt="Album image">
-              </div>
-              <div class="card-body" style="width: 18rem;">
-                <h5 class="card-title"><a href="#" class="album-link">{{album.name}}</a></h5>
-              </div>
-            </div>
+            <app-album-card [album]="album"></app-album-card>
           </div>
         </div>
       </div>

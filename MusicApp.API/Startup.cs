@@ -53,6 +53,8 @@ namespace MusicApp.API
             services.AddScoped<IUsersRepository, UsersRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();
             services.AddScoped<IPlaylistsRepository, PlaylistsRepository>();
+            services.AddScoped<IAlbumRepository, AlbumRepository>();
+            services.AddScoped<ISongRepository, SongsRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(options =>
                     {

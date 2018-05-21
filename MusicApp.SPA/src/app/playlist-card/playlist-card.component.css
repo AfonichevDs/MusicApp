@@ -1,0 +1,19 @@
+.playlist-link {
+	color: black;
+}
+
+.playlist-link :hover {
+	color: #2b2b2b;
+}
+
+.card-title {
+	text-align: center;
+}
+
+.artist-link {
+	color: black;
+}
+
+.artist-link :hover {
+	color: #2b2b2b;
+}

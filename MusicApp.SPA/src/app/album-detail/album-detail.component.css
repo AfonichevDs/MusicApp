@@ -1,0 +1,17 @@
+.album-cover {
+    width: 90%;
+    float: left;
+    min-width: 200px;
+}
+
+.album-content {
+    display: flex;
+}
+
+.album-content-cover {
+    flex: 40%;
+}
+
+.album-content-songs {
+    flex: 60%;
+}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
@@ -17,26 +18,27 @@ namespace MusicApp.API.Helpers
             response.Headers.Add("Access-Control-Origin-Header", "*");
         }
 
-        public static PlaylistDTO ToPlaylistDTO(this Playlist playlist)
+        public static PlaylistDetailDTO ToPlaylistDTO(this Playlist playlist)
         {
             var t = playlist.Songs.Any();
-            
-            return new PlaylistDTO
+
+            return new PlaylistDetailDTO
             {
                 Name = playlist.Name,
                 Description = playlist.Description,
                 IsMain = playlist.IsMain,
                 Username = playlist.User.UserName,
-                Songs = playlist.Songs.Any() ? playlist.Songs.Select(s => new SongListDTO
+                Songs = playlist.Songs.Any() ? playlist.Songs.Select(s => new SongDTO
                 {
                     Id = s.SongId,
                     Name = s.Song.Name,
                     Path = s.Song.Path,
+                    Order = s.Song.Order,
                     Album = new AlbumDTO
                     {
                         Id = s.Song.AlbumId.Value,
                         Name = s.Song.Album.Name,
-                        Cover = s.Song.Album.Cover.Url,
+                        CoverUrl = s.Song.Album.Cover.Url,
                         Artist = new ArtistInfoDTO()
                         {
                             Id = s.Song.Album.ArtistId,
@@ -50,6 +52,11 @@ namespace MusicApp.API.Helpers
         public static List<TDestination> MapList<TSource, TDestination>(this IMapper mapper, List<TSource> source)
         {
             return source.Select(x => mapper.Map<TDestination>(x)).ToList();
+        }
+
+        public static bool Contains(this string source, string toCheck, StringComparison comp)
+        {
+            return source?.IndexOf(toCheck, comp) >= 0;
         }
     }
 }

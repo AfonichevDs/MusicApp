@@ -1,10 +1,11 @@
-import { User } from './User';
-import { Song } from './Song';
+import { UserDTO } from "./UserDTO";
+import { ArtistDTO } from "./ArtistDTO";
 
-export interface Playlist {
+export class Playlist {
+    id: number;
     name: string;
     description: string;
-    isMain: boolean;
-    songs: Song[];
-    username: string;
+    songsCount: number;
+    user: UserDTO;
+    artists: ArtistDTO[];
 }

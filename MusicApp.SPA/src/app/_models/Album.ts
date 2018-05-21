@@ -4,6 +4,6 @@ import { ArtistDTO } from "./ArtistDTO";
 export class Album {
     id: number;
     name: string;
-    photoUrl: string;
+    coverUrl: string;
     artist: ArtistDTO;
 }

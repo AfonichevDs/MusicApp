@@ -1,0 +1,12 @@
+<div class="m-card" style="width: 29rem;">
+  <div class="card-img">
+    <p style="text-align: left;"><img class="card-img-top artist-card-img" src="{{artist.photoUrl}}" alt="Artist image">
+      {{artist.description | slicedots:225}}</p>
+  </div>
+  <hr>
+  <div class="card-body">
+    <h5 class="card-title">
+      <a routerLink="/artist/{{artist.id}}" class="artist-link">{{artist.name}}</a>
+    </h5>
+  </div>
+</div>

@@ -10,6 +10,8 @@ namespace MusicApp.API.Models
         public string Name { get; set; }
         [Required]
         public string Path { get; set; }
+        [Required]
+        public int Order { get; set; }
         public int? AlbumId { get; set; }
         public Album Album { get; set; }
 

@@ -1,0 +1,34 @@
+<div class="songs-result" *ngIf="songs.length > 0">
+  <h3>Songs:</h3>
+  <app-song *ngFor="let song of songs" [song]="song"></app-song>
+</div>
+<div class="artists-result" *ngIf="searchResult.artists.length > 0">
+  <h3>Artists:</h3>
+  <div *ngFor="let rowArtist of artists">
+    <div class="row">
+      <div class="col-sm-6" *ngFor="let artist of rowArtist">
+        <app-artist-card [artist]="artist"></app-artist-card>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="albums-result" *ngIf="searchResult.albums.length > 0">
+  <h3>Albums:</h3>
+  <div *ngFor="let rowAlbum of albums">
+    <div class="row">
+      <div class="col-sm-4" *ngFor="let album of rowAlbum">
+        <app-album-card [album]="album"></app-album-card>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="playlists-result" *ngIf="playlists.length > 0">
+  <h3>Playlists:</h3>
+  <div *ngFor="let rowPlaylist of playlists">
+    <div class="row">
+      <div class="col-sm-4" *ngFor="let playlist of rowPlaylist">
+        <app-playlist-card [playlist]="playlist"></app-playlist-card>
+      </div>
+    </div>
+  </div>
+</div>

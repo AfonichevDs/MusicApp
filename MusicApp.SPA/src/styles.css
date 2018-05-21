@@ -19,3 +19,24 @@
 .theme-default .bs-datepicker-head {
     background-color: black;
 }
+
+.m-card {
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding: 2px;
+}
+
+.m-card:hover .album-card-img{
+    transform: scale(1.2, 1.2);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: 0.9;
+}
+
+.card-body {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    text-align: center;
+}

@@ -1,0 +1,10 @@
+<h2>{{album.name}}</h2>
+<h4 style="margin-bottom: 20px;">{{album.year}}</h4>
+<div class="album-content">
+    <div class="album-content-cover">
+        <img [src]="album.coverUrl" alt="{{album.name}}" class="album-cover">
+    </div>
+    <div class="album-content-songs" [ngStyle]="{'margin-top':songs.length > 8 ? '-50px' : '0px' }">
+        <app-song *ngFor="let song of songs" [isFromAlbum]="true" [song]="song"></app-song>
+    </div>
+</div>

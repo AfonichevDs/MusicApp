@@ -1,8 +1,8 @@
-import { Playlist } from './../_models/Playlist';
 import { PlaylistsService } from './../_services/playlists.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Song } from '../_models/Song';
 import { ActivatedRoute } from '@angular/router';
+import { PlaylistDetail } from '../_models/PlaylistDetail';
 
 @Component({
   selector: 'app-song-list',
@@ -10,8 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./song-list.component.css']
 })
 export class SongListComponent implements OnInit {
-
-  mainPlaylist: Playlist;
+  mainPlaylist: PlaylistDetail;
   songs: Song[] = new Array<Song>();
 
   

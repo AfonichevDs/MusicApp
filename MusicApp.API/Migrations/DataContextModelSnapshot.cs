@@ -32,6 +32,8 @@ namespace MusicApp.API.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
+                    b.Property<int>("Year");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ArtistId");
@@ -118,6 +120,8 @@ namespace MusicApp.API.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired();
+
+                    b.Property<int>("Order");
 
                     b.Property<string>("Path")
                         .IsRequired();

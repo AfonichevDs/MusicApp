@@ -7,7 +7,7 @@ namespace MusicApp.API.Helpers
 {
     public class AutoMapperProfiles : Profile
     {
-        //todo sometime: add resolver for country name
+
         public AutoMapperProfiles()
         {
             CreateMap<UserRegisterDTO, User>()
@@ -24,15 +24,47 @@ namespace MusicApp.API.Helpers
                 opt.MapFrom(src => src.ProfilePhoto.Url);
             });
 
+            CreateMap<Playlist, PlaylistDTO>()
+            .ForMember(dest => dest.User, opt => {
+                opt.MapFrom(src => new UserInfoDTO{
+                    Id = src.User.Id,
+                    UserName = src.User.UserName
+                });
+            })
+            .ForMember(dest => dest.SongsCount, opt => {
+                opt.MapFrom(dest => dest.Songs.Count);
+            });
+
             CreateMap<Album, AlbumInfoDTO>()
-            .ForMember(dest => dest.PhotoUrl, opt => {
+            .ForMember(dest => dest.CoverUrl, opt => {
                 opt.MapFrom(src => src.Cover.Url);
+            });
+
+            CreateMap<Album, AlbumDTO>()
+            .ForMember(dest => dest.CoverUrl, opt => {
+                opt.MapFrom(src => src.Cover.Url);
+            });
+
+            CreateMap<Album, AlbumDetailDTO>()
+            .ForMember(dest => dest.CoverUrl, opt => {
+                opt.MapFrom(dest => dest.Cover.Url);
+            });
+
+            CreateMap<Artist, ArtistDTO>()
+            .ForMember(dest =>dest.PhotoUrl, opt => {
+                opt.MapFrom(src => src.Photo.Url);
             });
 
             CreateMap<Artist, ArtistDetailDTO>()
             .ForMember(dest =>dest.PhotoUrl, opt => {
                 opt.MapFrom(src => src.Photo.Url);
             });
+
+            CreateMap<Artist, ArtistInfoDTO>();
+
+            CreateMap<Song, SongAlbumListDTO>();
+            
+            CreateMap<Song, SongDTO>();
         }
     }
 }

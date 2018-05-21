@@ -1,5 +1,5 @@
 import { PlayerService } from './../_services/player.service';
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
 import { Song } from '../_models/Song';
 import { Subscription } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './main-player.component.html',
   styleUrls: ['./main-player.component.css']
 })
-export class MainPlayerComponent implements OnInit {
+export class MainPlayerComponent implements OnInit, OnDestroy {
   public audio: any;
   public isPlaying = false;
   public song: Song;
@@ -46,6 +46,10 @@ export class MainPlayerComponent implements OnInit {
     this.audio.ontimeupdate = () => {
       this.currentTimeEl.nativeElement.textContent = this.formattedTime(this.audio.currentTime);
     };
+  }
+
+  ngOnDestroy() {
+    this.subscriptionSong.unsubscribe();
   }
 
   public Play(): void {

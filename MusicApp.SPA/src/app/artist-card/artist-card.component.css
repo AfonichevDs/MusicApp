@@ -1,0 +1,13 @@
+.artist-link {
+    color: black;
+}
+
+.card-body {
+    padding: 5px;
+}
+
+.artist-card-img {
+    margin: 1px 4px 0 1px;
+    width: 50%;
+    float: left;
+}

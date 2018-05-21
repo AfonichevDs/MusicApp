@@ -7,6 +7,7 @@ import 'rxjs/add/observable/throw';
 import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 import { Country } from '../_models/Country';
+import { handleError } from './globals';
 
 @Injectable()
 export class AuthService {
@@ -26,7 +27,7 @@ export class AuthService {
                 this.userToken = user.tokenString;
                 this.decodedToken = this.jwtHelper.decodeToken(this.userToken);
             }
-        }).catch(this.handleError);
+        }).catch(handleError);
     }
 
     logOut() {
@@ -35,13 +36,13 @@ export class AuthService {
     }
 
     register(model: User) {
-        return this.http.post(this.baseUrl + 'register', model, this.requestOptions()).catch(this.handleError);
+        return this.http.post(this.baseUrl + 'register', model, this.requestOptions()).catch(handleError);
     }
 
     getCountries(): Observable<Country[]> {
         return this.http.get(this.countriesUrl + 'countries',this.requestOptions())
         .map(response => <Country[]>response.json())
-        .catch(this.handleError);
+        .catch(handleError);
     }
 
     loggedIn() {
@@ -53,29 +54,15 @@ export class AuthService {
         this.decodedToken = this.jwtHelper.decodeToken(this.userToken);
     }
 
+    get getDecodedToken():string {
+        if(!this.decodedToken)
+           this.decodeToken();
+        return this.decodedToken();
+      }
+
     private requestOptions() {
         const headers = new Headers({'Content-type': 'application/json'});
         return new RequestOptions({headers: headers});
-    }
-
-    private handleError(error:any) {
-        const applicationError = error.headers.get('Application-Error');
-        if(applicationError) {
-            return Observable.throw(applicationError);
-        }
-
-        const serverError = error.json();
-        let modelStateErrors = '';
-        if(serverError) {
-            for (const key in serverError) {
-                if(serverError[key]) {
-                    modelStateErrors += serverError[key] + '\n';
-                }
-            }
-        }
-        return Observable.throw(
-            modelStateErrors || 'Server Error'
-        );
     }
 
 }

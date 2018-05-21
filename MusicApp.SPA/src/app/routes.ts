@@ -7,18 +7,18 @@ import { RegisterComponent } from './register/register.component';
 import { SongListComponent } from './song-list/song-list.component';
 import { ArtistDetailComponent } from './artist-detail/artist-detail.component';
 import { ArtistResolver } from './_resolvers/artist.resolver';
+import { AlbumDetailComponent } from './album-detail/album-detail.component';
+import { AlbumResolver } from './_resolvers/album.resolver';
+import { SearchComponent } from './search/search.component';
+import { SearchResolver } from './_resolvers/search.resolver';
 
 export const appRoutes: Routes = [
-    {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
-    {path: 'register', component: RegisterComponent, canActivate: [AuthGuard]},
-    {
-        path:'',
-        runGuardsAndResolvers:'always',
-        canActivate: [LoggedInGuard],
-        children: [
-            {path: 'songs', component: SongListComponent,resolve: { mainPlaylist: PlaylistResolver}},
-            {path: 'artist/:id', component: ArtistDetailComponent, resolve: {artist: ArtistResolver}},
-        ]
-    },
-    {path: '**', redirectTo: 'songs', pathMatch: 'full'}
+    { path: '', redirectTo: 'songs', pathMatch: 'full'},
+    { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+    { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
+    { path: 'songs', component: SongListComponent, resolve: { mainPlaylist: PlaylistResolver },  canActivate: [LoggedInGuard] },
+    { path: 'artist/:id', component: ArtistDetailComponent, resolve: { artist: ArtistResolver },  canActivate: [LoggedInGuard] },
+    { path: 'album/:id', component: AlbumDetailComponent, resolve: { album: AlbumResolver },  canActivate: [LoggedInGuard] },
+    { path: 'search/:term', component: SearchComponent, resolve: { searchResult: SearchResolver },  canActivate: [LoggedInGuard] },
+    { path: '**', redirectTo: 'songs', pathMatch: 'full' }
 ]

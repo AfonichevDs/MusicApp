@@ -25,9 +25,9 @@ namespace MusicApp.API.Controllers
         [HttpGet("{idArtist}")]
         public async Task<IActionResult> GetArtist([FromQuery]int idArtist)
         {
-            var t = await repository.GetWithAlbums(idArtist);
-            var artist = mapper.Map<ArtistDetailDTO>(t);
-            return Ok(artist);
+            var artist = await repository.GetWithAlbums(idArtist);
+            var artistDto = mapper.Map<ArtistDetailDTO>(artist);
+            return Ok(artistDto);
         }
     }
 }

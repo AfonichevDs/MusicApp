@@ -2,21 +2,18 @@ import { AlertifyService } from './../_services/alertify.service';
 import { AuthService } from './../_services/auth.service';
 import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
-import { Playlist } from './../_models/Playlist';
 import { Resolve } from "@angular/router";
 import { PlaylistsService } from '../_services/playlists.service';
+import { PlaylistDetail } from '../_models/PlaylistDetail';
 
 @Injectable()
-export class PlaylistResolver implements Resolve<Playlist> {
+export class PlaylistResolver implements Resolve<PlaylistDetail> {
 
     constructor(private playlistService: PlaylistsService,
-        private authService: AuthService,
         private alertifyService: AlertifyService) { }
 
-    resolve(): Observable<Playlist> {
-        if (this.authService.decodedToken == null)
-            this.authService.decodeToken();
-        return this.playlistService.getMainPlaylist(this.authService.decodedToken.nameid).catch(error => {
+    resolve(): Observable<PlaylistDetail> {
+        return this.playlistService.getMainPlaylist().catch(error => {
             this.alertifyService.error(error);
             return Observable.of(null);
         })
